@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const connectDB = require('./config/database')
 const homeRoutes = require('./routes/home')
-// const lineRowRoutes = require('./routes/lineRow')
+const lineRowRoutes = require('./routes/lineRow')
 
 require('dotenv').config({path: './config/.env'})
 
@@ -14,7 +14,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
 app.use('/', homeRoutes)
-// app.use('/lineRow', lineRowRoutes)
+app.use('/lineRow', lineRowRoutes)
 
 
 
