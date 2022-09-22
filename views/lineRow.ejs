@@ -7,9 +7,30 @@
   <title>Line and Row Game</title>
 </head>
 <body>
+  <header>
+    <a href="/">Home</a>
+  </header>
   <h1>lets line row</h1>
   <p class="question-line"></p>
-  <button id="display-question">Give me a question!</button>
+  <!-- <button id="display-question">Give me a question!</button>
+  <button id="display-all-questions">All the questions</button> -->
+  
+  <ul>
+    <% zebra.forEach(el => { %>
+      <li class="questionItem" data-id="<%=el._id%>">
+        <span><%=el.question %></span>
+        <form action="/lineRow/deleteQuestion/<%= el.id %>?_method=DELETE" method="POST">
+          <button type="submit">DELETE</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+
+<form action="lineRow/createQuestion" method="POST">
+  <input type="text" placeholder="Enter question" name="question" id="new-question">
+  <input type="submit">
+</form>
+
 <script src="main.js"></script>
 </body>
 </html>
